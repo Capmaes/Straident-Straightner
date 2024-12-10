@@ -6,20 +6,20 @@
 
 
 #include "Particle.h"
-// #include "DFRobotDFPlayerMini.h"
 #include "Grove-Ultrasonic-Ranger.h"
 SYSTEM_MODE(SEMI_AUTOMATIC);
 SerialLogHandler logHandler(LOG_LEVEL_INFO);
 Ultrasonic Strident (D3);
 Ultrasonic Ultra (D7);
 // int position,prevpos;
-
+const int Speaker (D8);
  
 
 void setup()
 {
 Serial.begin(9600);
 waitFor(Serial.isConnected,10000);
+pinMode(Speaker,OUTPUT);
 
 }
 void loop()
