@@ -70,3 +70,4 @@ void loop()
 //     Serial.println(newPosition);
 //   }
 // && to check two statements are true }
+//get it to ignore numbers above 15 if above 5 posture bad
