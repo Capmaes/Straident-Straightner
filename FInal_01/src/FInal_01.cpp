@@ -13,7 +13,7 @@ SYSTEM_MODE(SEMI_AUTOMATIC);
 SerialLogHandler logHandler(LOG_LEVEL_INFO);
 Ultrasonic Strident (D3);
 Ultrasonic Ultra (D7);
-class IoTTimer SoundTimer;
+IoTTimer SoundTimer;
 int position;
 const int Speaker (A5);
 bool prevP = false;
@@ -33,7 +33,7 @@ void loop()
 	RangeInInches = Strident.MeasureInInches();//set to inches
   
   	if(RangeInInches!= position){
-  	Serial.printf("Ultrasonic#:%i\n",RangeInInches);
+  	Serial.printf("Ultrasonic#: %i \n",RangeInInches);
     position=RangeInInches; //if equal don't print
 	delay(5000);
    } 
@@ -47,13 +47,13 @@ void loop()
 
    if(position != Ultra.MeasureInInches() && position != Strident.MeasureInInches()){
 	oldPosition = position;
-	SoundTimer.startTimer();
+	SoundTimer.startTimer(5000);
 	tone(Speaker,440);
    }
 
 	else{
 		if(SoundTimer.isTimerReady()){
-		noTone();
+		noTone(Speaker);
 		}
 	
 	}
