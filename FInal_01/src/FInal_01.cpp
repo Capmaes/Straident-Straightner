@@ -14,10 +14,11 @@ SerialLogHandler logHandler(LOG_LEVEL_INFO);
 Ultrasonic Strident (D3);
 Ultrasonic Ultra (D7);
 class IoTTimer SoundTimer;
-float position;
+int position;
 const int Speaker (A5);
-bool prevP;
-
+bool prevP = false;
+long oldPosition = -999;
+long RangeinInches;
 
 void setup()
 {
@@ -29,12 +30,11 @@ pinMode(Speaker,OUTPUT);
 void loop()
 {
 	long RangeInInches;
-	// long RangeInCentimeters;
-
 	RangeInInches = Strident.MeasureInInches();//set to inches
-  if(RangeInInches= !position){
+  
+  	if(RangeInInches!= position){
   	Serial.printf("Ultrasonic#:%i\n",RangeInInches);
-    prevP=RangeInInches; //if equal don't print
+    position=RangeInInches; //if equal don't print
 	delay(5000);
    } 
 	RangeInInches = Ultra.MeasureInInches();
@@ -44,18 +44,29 @@ void loop()
 	delay(5000);
    } 
 
-	if(Strident!=Ultra){  //if they are not equal sound alarm 
-		SoundTimer.start
-		tone(Speaker,440);
-	}
+
+   if(position != Ultra.MeasureInInches() && position != Strident.MeasureInInches()){
+	oldPosition = position;
+	SoundTimer.startTimer();
+	tone(Speaker,440);
+   }
+
 	else{
-		if(SoundTimer,isTimerReady());
-		toneOff();
+		if(SoundTimer.isTimerReady()){
+		noTone();
+		}
+	
 	}
 }
-	// RangeInCentimeters = ultrasonic.MeasureInCentimeters(); // two measurements should keep an interval
-  // Serial.printf("%i \n", RangeInCentimeters);
-	// delay(250);
 
 
+//foundout encoder.read( ) is the same as ultra.measure 6pm
+// long oldPosition  = -999;
 
+// void loop() {
+//   long newPosition = myEnc.read();
+//   if (newPosition != oldPosition) {
+//     oldPosition = newPosition;
+//     Serial.println(newPosition);
+//   }
+// && to check two statements are true }
