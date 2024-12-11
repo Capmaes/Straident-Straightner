@@ -15,7 +15,7 @@ Ultrasonic Strident (D3);
 Ultrasonic Ultra (D7);
 IoTTimer SoundTimer;
 int position;
-const int Speaker (A5);
+const int Speaker (D15);
 bool prevP = false;
 long oldPosition = -999;
 long RangeinInches;
@@ -38,7 +38,7 @@ void loop()
 	delay(5000);
    } 
 	RangeInInches = Ultra.MeasureInInches();
-     if(RangeInInches!=prevP){
+	 if(RangeInInches!=prevP){
   	Serial.printf("Ultrasonic#seccond : %i\n",RangeInInches);
     prevP=RangeInInches; //if equal don't print
 	delay(5000);
