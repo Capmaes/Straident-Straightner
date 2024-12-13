@@ -89,7 +89,7 @@ lowerRangeInInches = Strident.MeasureInInches();
 	else{
 		if( Ultra.MeasureInInches() && Strident.MeasureInInches() =< 8){
 			//if sensor readings are less than 8 no alarm.
-		SoundTimer.isTimerReady()
+		SoundTimer.isTimerReady();
 		noTone(Speaker);
 		}
 	}
