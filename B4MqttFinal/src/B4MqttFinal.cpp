@@ -1,9 +1,7 @@
 /* 
  * Project myProject
- * Author: Your Name
- * Date: 
- * For comprehensive documentation and examples, please visit:
- * https://docs.particle.io/firmware/best-practices/firmware-template/
+ * Author: Caprice Harwood
+ * Date: 12/ 2024
  */
 
 // Include Particle Device OS APIs
@@ -22,7 +20,7 @@ int position;
 const int Speaker (D15); //PWM pin
 bool prevP = false;
 long oldPosition = -999;
-long RangeinInches;
+long RangeinInches;   
 // Show system, cloud connectivity, and application logs over USB
 // View logs with CLI using 'particle serial monitor --follow'
 
@@ -32,7 +30,7 @@ void setup() {
  Serial.begin(9600);
 waitFor(Serial.isConnected,10000);
 pinMode(Speaker,OUTPUT);
-}
+} 
 
 // loop() runs over and over again, as quickly as it can execute.
 void loop() {
